@@ -10,23 +10,20 @@
         const notificationType = { FOLLOW: "FOLLOW", COMMENT: "COMMENT", LIKE: "LIKE", MENTION: "MENTION" };
         const notificationStatus = { READ: "READ", UNREAD: "UNREAD" };
         const notificationPriority = { HIGHT: "HIGHT", NORMAL: "NORMAL", LOW: "LOW" };
-        const colors = [
-            "FFC0CB", // Rosa Pastel
-            "A2CFFE", // Azul Bebé
-            "D8B7DD", // Lila Claro
-            "B4E1B4", // Verde Menta
-            "FFFACD", // Amarillo Claro
-            "E6E6FA", // Lavanda
-            "FFB3AB"  // Coral Pastel
-        ];
-
-        const names = [
-            "pedro",
-            "luisa",
-            "esteban",
-            "catalina",
-            "maria"
-        ]
+ 
+        const names = {
+            data: [
+                "pedro",
+                "luisa",
+                "esteban",
+                "catalina",
+                "maria"
+            ],
+            getRandomName(){
+                const { data } = names; 
+                return data[Math.floor(Math.random() * data.length)];
+            }
+        }
 
         const API_AVATAR = "https://api.dicebear.com/9.x/adventurer/svg?seed=";
         const data_original = [
@@ -91,7 +88,7 @@
         const createPictureNotification = () => {
             const notificationPicture = document.createElement("div");
             notificationPicture.classList.add("notification__picture");
-            const nameRamdon = getNameRandomUser();
+            const nameRamdon = names.getRandomName();
             console.log("nameRamdon: ", nameRamdon);
             notificationPicture.style.backgroundImage = "url(" + getUserAvatar(nameRamdon) + ")";
             return notificationPicture;
@@ -182,10 +179,6 @@
               const years = Math.floor(diffInSeconds / secondsInYear);
               return years <= 1 ? "Hace un año" : `Hace ${years} años`;
             }
-        }
-
-        const getNameRandomUser = () => {
-            return names[Math.floor(Math.random() * names.length)];
         }
         
         const createNotification = (notification) => {
