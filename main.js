@@ -70,7 +70,7 @@
         
         const createContainer = () => {
             const notificationContainer = document.createElement("div");
-            notificationContainer.classList.add("notification__main");
+            notificationContainer.classList.add("notification__main", "fade");
             return notificationContainer;
         }
 

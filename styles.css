@@ -169,3 +169,25 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.fade {
+    animation: fade .5s ease-in-out;
+    will-change: opacity, transform;
+}
